@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Button from "../../components/Button";
+import Button, { Disabled } from "../../components/Button";
 import Input from "../../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -28,6 +28,7 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+
   return (
     <Container>
       <LoginContainer>
@@ -49,7 +50,8 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Disabled title="Entrar" disabled={!isValid} />
+          <Button title="Entrar" disabled={!isValid} />
         </Column>
       </LoginContainer>
     </Container>
